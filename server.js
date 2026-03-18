@@ -1,18 +1,8 @@
-require("dotenv").config();
-const express = require("express"); 
-const cors = require("cors");      
-const dotenv = require("dotenv");  
+require("dotenv").config({ path: __dirname + "/.env" });
+console.log("ENV:", process.env.DB_PASSWORD);
+const app = require("./src/app");
 
-dotenv.config(); 
-
-const app = express();
-
-app.use(cors());        
-app.use(express.json());   
-
-app.get("/", (req, res) => {
-  res.json({ message: "API running" }); 
-});
+require("./src/config/db");
 
 const PORT = process.env.PORT || 3001;
 

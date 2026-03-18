@@ -7,5 +7,6 @@ const pool = new Pool({
   password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT,
 });
+pool.connect().then(() => console.log("Postgressql Connect")).catch(err => console.error("DB Connection Error", err));
 
 module.exports = pool;
